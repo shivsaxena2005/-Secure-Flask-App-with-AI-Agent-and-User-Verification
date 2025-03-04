@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Linear Regression</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-color: #000;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            margin: auto;
+        }
+        h1, h2 {
+            color: cyan;
+        }
+        h2 {
+            border-bottom: 2px solid cyan;
+            padding-bottom: 5px;
+        }
+        p, li {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .formula {
+            font-weight: bold;
+            color: cyan;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            background-color: cyan;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #00e6e6;
+            box-shadow: 0 0 10px cyan;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Linear Regression Explained</h1>
+        <p>Linear Regression is a fundamental statistical method used to model the relationship between a dependent variable (<strong>Y</strong>) and an independent variable (<strong>X</strong>).</p>
+        
+        <h2>Equation of a Line</h2>
+        <p>The equation for simple linear regression is:</p>
+        <p class="formula">Y = mX + C</p>
+        <ul>
+            <li><strong>m</strong>: Slope of the line (weight of X).</li>
+            <li><strong>X</strong>: Independent variable.</li>
+            <li><strong>C</strong>: Intercept (bias), the value of Y when X = 0.</li>
+        </ul>
+        
+        <h2>Mathematical Intuition</h2>
+        <p>The goal is to minimize the error between actual and predicted values.</p>
+        <p>The error is calculated as:</p>
+        <p class="formula">Error = (Y - Y^)</p>
+        <p>To minimize the error, we use the Sum of Squared Errors (SSE):</p>
+        <p class="formula">SSE = Σ (Y<sub>i</sub> - Y^<sub>i</sub>)²</p>
+        <p>The optimal values of <strong>m</strong> and <strong>C</strong> are found using:</p>
+        <p class="formula">m = Σ (X<sub>i</sub> - X̄)(Y<sub>i</sub> - Ȳ) / Σ (X<sub>i</sub> - X̄)²</p>
+        <p class="formula">C = Ȳ - mX̄</p>
+        
+        <h2>Why Minimize Squared Error?</h2>
+        <p>Squaring the error avoids negative values canceling out, and since SSE forms a quadratic function (parabola), it guarantees a unique minimum point.</p>
+        
+        <h2>Advantages & Disadvantages</h2>
+        <ul>
+            <li><strong>Advantages:</strong> Easy to interpret, efficient for small datasets.</li>
+            <li><strong>Disadvantages:</strong> Assumes linearity, sensitive to outliers.</li>
+        </ul>
+        
+        <div class="button-container">
+            <form action="/linear_model" method="GET">
+                <input class="btn" type="submit" value="Check Model">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

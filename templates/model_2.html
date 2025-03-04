@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: black;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc; /* Line between form groups */
+        }
+        .form-group:last-child {
+            border-bottom: none; /* Remove line for the last group */
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form action="/knn_2" method="POST">
+    <div class="form-container">
+        <!-- Radius Worst -->
+        <div class="form-group">
+            <label for="radius_worst">Radius Worst</label>
+            <input type="number" id="radius_worst" name="radius_worst" required>
+        </div>
+
+        <!-- Perimeter Worst -->
+        <div class="form-group">
+            <label for="perimeter_worst">Perimeter Worst</label>
+            <input type="number" id="perimeter_worst" name="perimeter_worst" required>
+        </div>
+
+        <!-- Area Worst -->
+        <div class="form-group">
+            <label for="area_worst">Area Worst</label>
+            <input type="number" id="area_worst" name="area_worst" required>
+        </div>
+
+        <!-- Concave Points Worst -->
+        <div class="form-group">
+            <label for="concave_points_worst">Concave Points Worst</label>
+            <input type="number" id="concave_points_worst" name="concave_points_worst" required>
+        </div>
+
+        <!-- Concavity Mean -->
+        <div class="form-group">
+            <label for="concavity_mean">Concavity Mean</label>
+            <input type="number" id="concavity_mean" name="concavity_mean" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output Result</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("C:\Users\hp\Downloads\Medical.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            position: relative; /* Required for watermark positioning */
+        }
+
+        /* Watermark Style */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("C:\\Users\\hp\\Downloads\\watermark.png"); /* Path to your watermark image */
+            background-repeat: repeat; /* Repeat the watermark */
+            opacity: 0.3; /* Adjust transparency */
+            pointer-events: none; /* Ensure the watermark doesn't interfere with clicks */
+            z-index: 1; /* Place the watermark behind the content */
+        }
+
+        .output-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative; /* Ensure the content is above the watermark */
+            z-index: 2; /* Place the content above the watermark */
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #007BFF;
+            margin: 0;
+        }
+
+        .output-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="output-container">
+        <div class="output-text">Diabetes Prediction is:-</div>
+        <h1>{{m}}</h1>
+    </div>
+</body>
+</html>

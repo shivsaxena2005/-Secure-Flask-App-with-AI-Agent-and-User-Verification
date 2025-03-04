@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Tree</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #000;
+            color: white;
+        }
+        h1, h2 {
+            color: cyan;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,255,255,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Decision Tree</h1>
+        <p>A decision tree is a hierarchical structure used for decision-making that consists of nested if-else conditions.</p>
+        <p>Mathematically, decision trees use hyperplanes that run parallel to one of the axes to split the dataset into regions.</p>
+        
+        <h2>Components of a Decision Tree:</h2>
+        <ul>
+            <li><strong>Root Node:</strong> The starting point representing the entire dataset.</li>
+            <li><strong>Internal Nodes:</strong> Decision points based on feature values.</li>
+            <li><strong>Branches:</strong> Possible outcomes leading to child nodes.</li>
+            <li><strong>Leaf Nodes:</strong> Final decision or prediction values.</li>
+        </ul>
+        
+        <h2>Mathematical Concepts:</h2>
+        <h3>1. Entropy (Measures randomness in the data)</h3>
+        <p><strong>Formula:</strong> \(E(S) = -\sum (p_i \log_2 p_i)\)</p>
+        
+        <h3>2. Gini Index (Measures impurity in a dataset)</h3>
+        <p><strong>Formula:</strong> \(Gini = 1 - (P_y^2 + P_n^2)\)</p>
+        
+        <h3>3. Information Gain (IG) - Measures the quality of a split</h3>
+        <p><strong>Formula:</strong> \(IG(S, A) = H(S) - \sum (|S_v| / |S|) \times H(S_v)\)</p>
+        
+        <h2>Types of Decision Trees:</h2>
+        <ul>
+            <li><strong>Classification Trees:</strong> Used for categorical target variables.</li>
+            <li><strong>Regression Trees:</strong> Used for continuous target variables.</li>
+        </ul>
+        
+        <h2>Pruning Techniques (Prevent Overfitting)</h2>
+        <ul>
+            <li><strong>Pre-Pruning:</strong> Stops tree growth early if further splitting does not improve results.</li>
+            <li><strong>Post-Pruning:</strong> Removes unnecessary nodes after the tree is fully built.</li>
+        </ul>
+        
+        <h2>Decision Tree Algorithms:</h2>
+        <ul>
+            <li><strong>ID3:</strong> Uses Entropy & Information Gain.</li>
+            <li><strong>C4.5:</strong> An improvement over ID3 that supports continuous data.</li>
+            <li><strong>CART:</strong> Uses Gini Index and supports both classification and regression.</li>
+        </ul>
+        
+        <h2>Advantages:</h2>
+        <ul>
+            <li>Easy to interpret and visualize.</li>
+            <li>Handles both numerical and categorical data.</li>
+            <li>No need for feature scaling.</li>
+        </ul>
+        
+        <h2>Disadvantages:</h2>
+        <ul>
+            <li>Prone to overfitting.</li>
+            <li>Can be unstable (small changes in data can alter structure).</li>
+            <li>Biased towards dominant features.</li>
+        </ul>
+    </div> 
+    <form action="/decision" method="GET">
+        <input float='center' type="submit" value="Check_Model">
+    </form>
+</body>
+</html>

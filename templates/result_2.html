@@ -1,0 +1,51 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Yes guys finally success</h1>
+    {% if prediction %}
+    <p>{{ prediction }}</p>
+{% else %}
+    <p>No prediction available</p>
+{% endif %}
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+        p {
+            font-size: 1.5em;
+            color:aliceblue;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   <p> According to Your given information the Cancer Diagnosis is:-</p> {% if prediction %}
+    <p>{{ prediction }}</p>
+{% else %}
+    <p>No prediction available</p>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naïve Bayes Classifier - In-Depth Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-color: #000;
+            color: white;
+        }
+        .container {
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            margin: auto;
+        }
+        h1, h2 {
+            color: cyan;
+        }
+        h2 {
+            border-bottom: 2px solid cyan;
+            padding-bottom: 5px;
+        }
+        p, li {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .formula {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            color: cyan;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            background-color: cyan;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #00e6e6;
+            box-shadow: 0 0 10px cyan;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Naïve Bayes Classifier - A Deep Dive</h1>
+        <p>Naïve Bayes is a probabilistic classifier based on Bayes' Theorem with an assumption of conditional independence between features. It is widely used in spam filtering, document classification, and medical diagnosis due to its simplicity and efficiency.</p>
+        
+        <h2>Mathematical Foundation</h2>
+        <p>Bayes' Theorem provides the foundation for this classifier:</p>
+        <div class="formula">P(A | B) = (P(B | A) * P(A)) / P(B)</div>
+        
+        <h2>Applying Naïve Bayes to Classification</h2>
+        <p>Given a dataset with features X = {x₁, x₂, ..., xₙ} and classes Cₖ = {c₁, c₂, ..., cₘ}, we classify by computing:</p>
+        <div class="formula">P(Cₖ | X) ∝ P(Cₖ) * Π P(xᵢ | Cₖ)</div>
+        <p>The class with the highest probability is the predicted class.</p>
+        
+        <h2>Why the "Naïve" Assumption?</h2>
+        <p>The assumption that all features are independent simplifies computation but is often unrealistic. However, in practice, Naïve Bayes still works well due to its ability to approximate real-world distributions effectively.</p>
+        
+        <h2>Handling Zero Probabilities: Laplace Smoothing</h2>
+        <p>To avoid zero probabilities, we use **Laplace Smoothing**:</p>
+        <div class="formula">P(xᵢ | Cₖ) = (count(xᵢ, Cₖ) + 1) / (count(Cₖ) + |V|)</div>
+        
+        <h2>Gaussian Naïve Bayes for Continuous Data</h2>
+        <p>If features are continuous, we assume a **Gaussian (Normal) distribution** and use the probability density function:</p>
+        <div class="formula">P(x | Cₖ) = (1 / (σ √2π)) * e^(-(x - μ)² / (2σ²))</div>
+        
+        <div class="button-container">
+            <form action="/naive_" method="GET">
+                <input class="btn" type="submit" value="Check Model">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
