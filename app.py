@@ -54,7 +54,7 @@ def register():
         branch = request.form.get('branch')
         password = request.form.get('password')
         address = request.form.get('address')
-
+       # if()
         if not all([name, email, branch, password, address]):
             flash("⚠️ Error: All fields are required!", "danger")
             return render_template('register.html')
@@ -83,7 +83,7 @@ def login():
         if user and check_password_hash(user.password, password):
             session['email'] = user.email
             return render_template('ml_files.html')
-        print("Wrong password")
+        return(render_template('wrong.html'))
         flash("Invalid email or password", "danger")
         return redirect(url_for('login'))
     print("Error")
