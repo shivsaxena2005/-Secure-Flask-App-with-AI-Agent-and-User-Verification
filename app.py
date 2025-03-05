@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Generates a random key each time the app restarts
 
 # Load configuration from JSON
-with open('C:/Users/hp/Flask/templates/config.json', 'r') as f:
+with open('templates/config.json', 'r') as f:
     params = json.load(f)['params']
 
 # ✅ Flask-Mail Configuration
