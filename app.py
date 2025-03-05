@@ -26,7 +26,10 @@ mail = Mail(app)
 
 # ✅ Database Configuration
 app.secret_key = "loginform"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Rajat%40123@localhost/practise'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'mysql://root:Rajat%40123@localhost/practise')
+
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Rajat%40123@localhost/practise'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -209,8 +212,8 @@ def knn_new():
         from sklearn.neighbors import KNeighborsClassifier
         from sklearn.metrics import accuracy_score
 
-# 🔹 Step 1: Load the dataset
-        df = pd.read_csv('D:\\coa_lab\\datasets\\KNNAlgorithmDataset.csv')
+# 🔹 Step 1: Load the datasetC:\Users\hp\Desktop\project_1\static\KNNAlgorithmDataset.csv
+        df = pd.read_csv('static/KNNAlgorithmDataset.csv')
 
 # 🔹 Step 2: Select features and target variable
         X = df[['radius_worst', 'perimeter_worst', 'area_worst', 'concave points_worst', 'concavity_mean']]
@@ -253,7 +256,7 @@ def knn_new():
 @app.route('/decision',methods=['GET','POST'])
 def home():
     if(request.method=='POST'):
-        model1 = joblib.load('C:\\Users\\hp\\Downloads\\updated_model.pkl')
+        model1 = joblib.load('static/updated_model.pkl')
         new = pd.DataFrame({
             'Age': [float(request.form.get('Age'))], 
             'Gender': [float(request.form.get('Gender'))], 
@@ -272,8 +275,8 @@ def home():
 
 @app.route('/naive_',methods=['GET','POST'])
 def nai():
-    if(request.method == 'POST'):
-        model = joblib.load('C:\\Users\\hp\\Downloads\\naive_bayes_diabetes.pkl')
+    if(request.method == 'POST'):  
+        model = joblib.load('static\naive_bayes_diabetes.pkl')
         # Example new patient data
         new_data = pd.DataFrame({
             'glucose': [float(request.form.get('glucose', 100))],  # Default 100 if missing
