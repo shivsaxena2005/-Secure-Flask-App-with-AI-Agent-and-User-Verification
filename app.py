@@ -27,9 +27,11 @@ mail = Mail(app)
 # ✅ Database Configuration
 app.secret_key = "loginform"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'mysql://root:Rajat%40123@localhost/practise')
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'mysql://root:Rajat%40123@localhost/practise')
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'mysql://root:Rajat%40123@localhost/practise')
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Rajat%40123@localhost/practise'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Rajat%40123@localhost/practise'
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'postgresql://username:password@hostname:port/dbname')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
