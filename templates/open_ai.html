@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Agent Response</title>
+    <style>
+        body {
+            background: #1e1e2f;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: #2e2e40;
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: #00d1ff;
+            text-align: center;
+        }
+
+        .output {
+            background: #111;
+            color: #eee;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            margin-top: 20px;
+        }
+
+        a.back-link {
+            margin-top: 30px;
+            display: inline-block;
+            color: #00d1ff;
+            text-decoration: none;
+        }
+
+        a.back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>AI Agent's Response</h2>
+        <div class="output">
+            {{ response }}
+        </div>
+        <a href="/aiagent" class="back-link">← Try another input</a>
+    </div>
+</body>
+</html>

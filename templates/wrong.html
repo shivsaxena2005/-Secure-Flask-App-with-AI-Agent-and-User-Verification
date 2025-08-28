@@ -6,22 +6,49 @@
     <title>Wrong Password</title>
     <style>
         body {
-            background-color: black;
-            color: white;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1600267165685-cb1dc87f43df');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
             flex-direction: column;
-            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            text-shadow: 1px 1px 5px black;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        form input[type="submit"] {
+            padding: 12px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 0, 0, 0.8);
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+        }
+
+        form input[type="submit"]:hover {
+            background-color: rgba(255, 0, 0, 1);
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <h1>Wrong password/Email</h1>
+    <h1>Wrong Email or Password</h1>
     <form action="/login" method="GET">
-        <input type="submit" value="CLICK_HERE">
+        <input type="submit" value="TRY AGAIN">
     </form>
 </body>
 </html>

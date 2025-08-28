@@ -1,115 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Machine Learning Basics & Models</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            width: 400px;
-            text-align: center;
-            margin-bottom: 20px;
-            color: white;
-        }
-        h2, h3 {
-            color: cyan;
-        }
-        .info {
-            text-align: left;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        input[type="submit"] {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: cyan;
-            color: black;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        input[type="submit"]:hover {
-            background-color: #00e6e6;
-            box-shadow: 0 0 10px cyan;
-        }
-        .form-container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            margin-bottom: 20px;
-            width: 400px;
-            text-align: center;
-            color: white;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Machine Learning Basics & Models</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475'); /* dark keyboard */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      width: 80%;
+      max-width: 800px;
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: cyan;
+    }
+
+    .info {
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .models-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .form-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      width: 200px;
+      text-align: center;
+      color: white;
+    }
+
+    input[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: cyan;
+      color: black;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #00e6e6;
+      box-shadow: 0 0 10px cyan;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Basic Machine Learning Concepts</h2>
-        <div class="info">
-            <strong>1. Training:</strong> Finds a function that reduces error, learning the relationship between input and output.<br>
-            <strong>2. Testing:</strong> Evaluates how well the model predicts unseen data.<br>
-            <strong>3. Model:</strong> A mathematical function mapping inputs to outputs.<br>
-            <strong>4. Error:</strong> The difference between actual and predicted values.<br>
-            <strong>5. Supervised Learning:</strong> Uses labeled data (input-output pairs).<br>
-            <strong>6. Underfitting:</strong> A too-simple model that fails to learn relationships.<br>
-            <strong>7. Overfitting:</strong> A too-complex model that memorizes training data.<br>
-            <strong>8. Bias:</strong> Inability to capture relationships in data.<br>
-            <strong>9. Variance:</strong> Sensitivity to small variations in training data.<br>
-            <strong>10. Regularization:</strong> Prevents overfitting by adding constraints.<br>
-        </div>
-    </div>
 
-    <div class="form-container">
-        <form action="/knn" method="POST">
-            <h1>KNN</h1>
-            <input type="submit" value="Submit">
-        </form>
+  <div class="container">
+    <h2>Basic Machine Learning Concepts</h2>
+    <div class="info">
+      <strong>1. Training:</strong> Learns the relationship between input and output.<br>
+      <strong>2. Testing:</strong> Evaluates prediction on unseen data.<br>
+      <strong>3. Model:</strong> Maps inputs to outputs.<br>
+      <strong>4. Error:</strong> Difference between actual and predicted.<br>
+      <strong>5. Supervised Learning:</strong> Uses labeled data.<br>
+      <strong>6. Underfitting:</strong> Model too simple.<br>
+      <strong>7. Overfitting:</strong> Model too complex.<br>
+      <strong>8. Bias:</strong> Missed patterns.<br>
+      <strong>9. Variance:</strong> Overreaction to small changes.<br>
+      <strong>10. Regularization:</strong> Prevents overfitting.<br>
     </div>
+  </div>
 
+  <div class="models-wrapper">
     <div class="form-container">
-        <form action="/naive" method="POST">
-            <h1>NAIVE BAYES</h1>
-            <input type="submit" value="Submit">
-        </form>
+      <form action="/knn" method="POST">
+        <h1>KNN</h1>
+        <input type="submit" value="Submit">
+      </form>
     </div>
+    <div class="form-container">
+      <form action="/naive" method="POST">
+        <h1>Naive Bayes</h1>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div class="form-container">
+      <form action="/svm" method="POST">
+        <h1>SVM</h1>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div class="form-container">
+      <form action="/linear_regression" method="POST">
+        <h1>Linear Reg.</h1>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div class="form-container">
+      <form action="/decision_tree" method="POST">
+        <h1>Decision Tree</h1>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
 
-    <div class="form-container">
-        <form action="/svm" method="POST">
-            <h1>SVM</h1>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-
-    <div class="form-container">
-        <form action="/linear_regression" method="POST">
-            <h1>Linear Regression</h1>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-
-    <div class="form-container">
-        <form action="/decision_tree" method="POST">
-            <h1>DECISION TREE</h1>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
 </body>
 </html>

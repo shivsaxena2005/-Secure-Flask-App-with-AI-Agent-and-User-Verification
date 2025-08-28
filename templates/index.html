@@ -1,164 +1,130 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            width: 300px;
-            text-align: center;
-        }
-        .form-container h1 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .form-container input[type="submit"] {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .form-container input[type="submit"]:hover {
-            background-color: #218838;
-        }
-        .form-container:not(:last-child) {
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Welcome to Our Website</h1>
-
-    <div class="form-container">
-        <form action="/login" method="GET">
-            <h1>LOGIN</h1>
-            <input type="submit" value="LOGIN">
-        </form>
-    </div>
-
-    <div class="form-container">
-        <form action="/register" method="GET">
-            <h1>Don't have an account?</h1>
-            <input type="submit" value="Register">
-        </form>
-    </div>
-
-    <div class="form-container">
-        <form action="/forget_pass" method="GET">
-            <h1>Forgot Password?</h1>
-            <input type="submit" value="Forgot Password">
-        </form>
-    </div>
-</body>
-</html> -->
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .form-container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            margin-bottom: 20px;
-            width: 300px;
-            text-align: center;
-        }
-        .form-container h1 {
-            margin-bottom: 20px;
-            color: #fff;
-        }
-        .form-container input[type="submit"] {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: cyan;
-            color: black;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .form-container input[type="submit"]:hover {
-            background-color: #00e6e6;
-            box-shadow: 0 0 10px cyan;
-        }
-        .form-container:not(:last-child) {
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-            padding-bottom: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart AI Panel</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    h1.title {
+      color: #ffffff;
+      margin-bottom: 40px;
+      font-size: 32px;
+      text-shadow: 0 0 10px #00ffff, 0 0 5px black;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .form-container {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      width: 240px;
+      text-align: center;
+    }
+
+    .form-container h1 {
+      margin-bottom: 15px;
+      color: #00ffff;
+      font-size: 18px;
+    }
+
+    .form-container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #00ffff;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-container input[type="submit"]:hover {
+      background-color: #00cccc;
+    }
+
+    @media screen and (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1 style="color: white;">Welcome to Our Website</h1>
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="https://img.icons8.com/ios-filled/100/artificial-intelligence.png" alt="AI Logo">
+  </div>
 
+  <!-- PAGE TITLE -->
+  <h1 class="title">MLPlayground + LangChain Assistant</h1>
+
+  <!-- Horizontal Form Buttons -->
+  <div class="form-row">
+    <!-- LOGIN -->
     <div class="form-container">
-        <form action="/login" method="GET">
-            <h1>LOGIN</h1>
-            <input type="submit" value="LOGIN">
-        </form>
+      <form action="/login" method="GET">
+        <h1>LOGIN</h1>
+        <input type="submit" value="LOGIN">
+      </form>
     </div>
 
+    <!-- REGISTER -->
     <div class="form-container">
-        <form action="/register" method="GET">
-            <h1>Don't have an account?</h1>
-            <input type="submit" value="Register">
-        </form>
+      <form action="/register" method="GET">
+        <h1>Register</h1>
+        <input type="submit" value="Register">
+      </form>
     </div>
 
+    <!-- FORGOT -->
     <div class="form-container">
-        <form action="/forget_pass" method="GET">
-            <h1>Forgot Password?</h1>
-            <input type="submit" value="Forgot Password">
-        </form>
+      <form action="/forget_pass" method="GET">
+        <h1>Reset Password</h1>
+        <input type="submit" value="Forgot Password">
+      </form>
     </div>
+
+    <!-- AI AGENT -->
+    <div class="form-container">
+      <form action="/aiagent" method="GET">
+        <h1>Use AI Agent</h1>
+        <input type="submit" value="AI Model">
+      </form>
+    </div>
+  </div>
 </body>
 </html>

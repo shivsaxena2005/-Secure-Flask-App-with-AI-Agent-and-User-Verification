@@ -1,103 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Understanding K-Nearest Neighbors (KNN)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            padding: 20px;
-            background-color: #000;
-            color: white;
-        }
-        .container {
-            max-width: 800px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            margin: auto;
-        }
-        h1, h2 {
-            color: cyan;
-        }
-        h2 {
-            border-bottom: 2px solid cyan;
-            padding-bottom: 5px;
-        }
-        p, li {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .formula {
-            font-weight: bold;
-            color: cyan;
-        }
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .btn {
-            padding: 10px 15px;
-            border: none;
-            background-color: cyan;
-            color: black;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background-color: #00e6e6;
-            box-shadow: 0 0 10px cyan;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Understanding K-Nearest Neighbors (KNN)</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1542831371-d531d36971e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.85);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+      margin: auto;
+    }
+    h1, h2 {
+      color: cyan;
+    }
+    h2 {
+      border-bottom: 2px solid cyan;
+      padding-bottom: 5px;
+    }
+    p, li {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .formula {
+      font-weight: bold;
+      color: cyan;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 25px;
+    }
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      background-color: cyan;
+      color: black;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 17px;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background-color: #00e6e6;
+      box-shadow: 0 0 15px cyan;
+    }
+  </style>
 </head>
 <body>
+  <div class="overlay">
     <div class="container">
-        <h1>K-Nearest Neighbors (KNN) Explained</h1>
-        <p>KNN is a non-parametric algorithm used for classification and regression. It makes predictions based on the majority class or the average of the nearest neighbors.</p>
-        
-        <h2>How KNN Works?</h2>
-        <p>For a given test data point, KNN:</p>
-        <ul>
-            <li>Calculates the distance to all training data points.</li>
-            <li>Sorts the training points by distance.</li>
-            <li>Selects the top <strong>K</strong> nearest neighbors.</li>
-            <li>Determines the class (for classification) or takes the average (for regression).</li>
-        </ul>
-        
-        <h2>Choosing the Value of K</h2>
-        <p>The optimal value of <strong>K</strong> is found using:</p>
-        <ul>
-            <li>Square root of the number of data points (avoiding even values).</li>
-            <li>Cross-validation techniques to determine the best K.</li>
-        </ul>
-        
-        <h2>Mathematical Formula</h2>
-        <p>One of the most commonly used distance measures in KNN is:</p>
-        <p class="formula">Euclidean Distance = √((x₂ - x₁)² + (y₂ - y₁)²)</p>
-        
-        <h2>Advantages & Disadvantages</h2>
-        <ul>
-            <li><strong>Advantages:</strong> Simple, effective for small datasets, non-parametric.</li>
-            <li><strong>Disadvantages:</strong> Computationally expensive, sensitive to noisy data, struggles in high dimensions.</li>
-        </ul>
-        
-        <h2>Cross-Validation in KNN</h2>
-        <ul>
-            <li><strong>K-Fold Cross-Validation:</strong> Divides data into k parts, trains on k-1 parts, tests on the remaining.</li>
-            <li><strong>Stratified K-Fold Cross-Validation:</strong> Ensures class distribution remains similar in each fold.</li>
-        </ul>
-        
-        <div class="button-container">
-            <form action="/knn_2" method="GET">
-                <input class="btn" type="submit" value="Check Model">
-            </form>
-        </div>
+      <h1>K-Nearest Neighbors (KNN) Explained</h1>
+      <p>KNN is a non-parametric algorithm used for classification and regression. It makes predictions based on the majority class or the average of the nearest neighbors.</p>
+      
+      <h2>How KNN Works?</h2>
+      <p>For a given test data point, KNN:</p>
+      <ul>
+        <li>Calculates the distance to all training data points.</li>
+        <li>Sorts the training points by distance.</li>
+        <li>Selects the top <strong>K</strong> nearest neighbors.</li>
+        <li>Determines the class (for classification) or takes the average (for regression).</li>
+      </ul>
+      
+      <h2>Choosing the Value of K</h2>
+      <p>The optimal value of <strong>K</strong> is found using:</p>
+      <ul>
+        <li>Square root of the number of data points (avoiding even values).</li>
+        <li>Cross-validation techniques to determine the best K.</li>
+      </ul>
+      
+      <h2>Mathematical Formula</h2>
+      <p class="formula">Euclidean Distance = √((x₂ - x₁)² + (y₂ - y₁)²)</p>
+      
+      <h2>Advantages & Disadvantages</h2>
+      <ul>
+        <li><strong>Advantages:</strong> Simple, effective for small datasets, non-parametric.</li>
+        <li><strong>Disadvantages:</strong> Computationally expensive, sensitive to noisy data, struggles in high dimensions.</li>
+      </ul>
+      
+      <h2>Cross-Validation in KNN</h2>
+      <ul>
+        <li><strong>K-Fold Cross-Validation:</strong> Divides data into k parts, trains on k-1 parts, tests on the remaining.</li>
+        <li><strong>Stratified K-Fold Cross-Validation:</strong> Ensures class distribution remains similar in each fold.</li>
+      </ul>
+      
+      <div class="button-container">
+        <form action="/knn_2" method="GET">
+          <input class="btn" type="submit" value="Check Model" />
+        </form>
+      </div>
     </div>
+  </div>
 </body>
 </html>

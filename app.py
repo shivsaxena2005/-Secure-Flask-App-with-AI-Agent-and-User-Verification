@@ -6,45 +6,117 @@ import random
 from werkzeug.security import generate_password_hash, check_password_hash  # Secure password handling
 import os,joblib,numpy as np,pandas as pd
 import pymysql
+from langchain_together import ChatTogether
+from langchain_together import ChatTogether
+from dotenv import load_dotenv
+from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnableParallel
+import os 
 pymysql.install_as_MySQLdb()
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)  # Generates a random key each time the app restarts
 
-# Load configuration from JSON
+app.secret_key = os.getenv("SECRET_KEY", "loginform")
+
+# ✅ Database Configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
+    "postgresql://ml_w97b_user:WoDo7ssEI9FxvkzC4G9tzaPx2u3OK28H@dpg-d2o8kbgdl3ps73d8i120-a/ml_w97b",
+    "postgresql://ml_w97b_user:WoDo7ssEI9FxvkzC4G9tzaPx2u3OK28H@dpg-d2o8kbgdl3ps73d8i120-a:5432/ml_w97b"  # replace with Render DB if running locally
+)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+load_dotenv()
+model = ChatTogether()
+
+parser = StrOutputParser()
+
+
+#app.secret_key = os.urandom(24)  # Generates a random key each time the app restarts
+prompt1 = PromptTemplate(
+    template="""
+Is the following topic related to machine learning? 
+If yes, explain it simply in a paragraph and begin with 'Owner is Shiv Saxena.'
+If not, respond with:
+"Sorry but the authority Mr. Shiv Saxena denied to access or your input is not related to Machine Learning: {topic}"
+
+Topic: {topic}
+""",
+    input_variables=['topic']
+)
+
+@app.route('/key', methods=['GET', 'POST'])
+def key():
+    if request.method == 'POST':
+        api_key = request.form.get('api_key')
+        if api_key.startswith("015"):  # simple validation
+            session['api_key'] = api_key
+            return redirect(url_for('ai'))  # Go to ai page
+        else:
+            return render_template('key.html', error="Invalid API Key format!")
+    return render_template('key.html')
+
+
+# Route for AI agent
+@app.route('/aiagent', methods=['GET', 'POST'])
+def ai():
+    if 'api_key' not in session:
+        return redirect(url_for('key'))  # No key entered → go back
+
+    TOGETHER_API_KEY = session['api_key']  # get saved key
+
+    # Initialize model with stored key
+    model = ChatTogether(api_key = TOGETHER_API_KEY,model="meta-llama/Llama-3-70b-chat-hf")
+
+    if request.method == 'POST':
+        inp = request.form.get('text')
+        chain = prompt1 | model  # assuming you have defined prompt1 already
+        s = chain.invoke({'topic': inp})
+        print(s.content)
+        return render_template('open_ai.html', response=s.content)
+    else:
+        return render_template('Agent.html')
+
+
+#Load configuration from JSON
 with open('templates/config.json', 'r') as f:
     params = json.load(f)['params']
 
 # ✅ Flask-Mail Configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+#app.config['MAIL_PORT'] = 587
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USERNAME'] = params['gmail_user']
-app.config['MAIL_PASSWORD'] = params['gmail_password']
+#app.config['MAIL_USERNAME'] = 'practise_h6z0_user'
+app.config['MAIL_PASSWORD'] = os.getenv('gmail_pass')
+#app.config['MAIL_PASSWORD'] = '9sBa6Q
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 mail = Mail(app)
 
 # ✅ Database Configuration
-app.secret_key = "loginform"
+#app.secret_key = "loginform"
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://practise_h6z0_user:9sBa6QDZbjojGrN6GZLdAIOfhMIRmW4m@dpg-cv4qo9an91rc73e53cn0-a:5432/practise_h6z0'
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'mysql://root:Rajat%40123@localhost/practise')
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'mysql://root:Rajat%40123@localhost/practise')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Rajat%40123@localhost/practise'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Rajat%40123@localhost/practise'
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'postgresql://username:password@hostname:port/dbname')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # ✅ Database Model
 class Contact(db.Model):
     __tablename__ = 'first'
     sno = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
-    password = db.Column(db.String(255), nullable=False)  # Increased length for hash
+    password = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
     branch = db.Column(db.String(10), nullable=False)
     address = db.Column(db.String(20), nullable=False)
-
+with app.app_context():
+    db.create_all()
 # ✅ Home Page
 @app.route('/')
 def index():
@@ -111,7 +183,7 @@ def forget_pass():
             session['email'] = email
 
             # ✅ Send OTP Email
-            msg = Message('OTP Verification Mail',
+            msg = Message('Otp Verification mail: ',
                           sender=app.config['MAIL_USERNAME'],
                           recipients=[email])
             msg.body = f"Your OTP is: {otp}"
@@ -278,7 +350,7 @@ def home():
 @app.route('/naive_',methods=['GET','POST'])
 def nai():
     if(request.method == 'POST'):  
-        model = joblib.load('static\naive_bayes_diabetes.pkl')
+        model = joblib.load('static/naive_bayes_diabetes.pkl')
         # Example new patient data
         new_data = pd.DataFrame({
             'glucose': [float(request.form.get('glucose', 100))],  # Default 100 if missing
