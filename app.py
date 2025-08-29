@@ -21,8 +21,8 @@ app.secret_key = os.getenv("SECRET_KEY", "loginform")
 
 # ✅ Database Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
-    "postgresql://ml_w97b_user:WoDo7ssEI9FxvkzC4G9tzaPx2u3OK28H@dpg-d2o8kbgdl3ps73d8i120-a/ml_w97b",
-    "postgresql://ml_w97b_user:WoDo7ssEI9FxvkzC4G9tzaPx2u3OK28H@dpg-d2o8kbgdl3ps73d8i120-a:5432/ml_w97b"  # replace with Render DB if running locally
+    "postgresql://database_niuc_user:aBThmxX4Bx6L6RXJAA8nxydws2OLV1VD@dpg-d2ojcl2dbo4c73blu8cg-a/database_niuc",
+    "postgresql://database_niuc_user:aBThmxX4Bx6L6RXJAA8nxydws2OLV1VD@dpg-d2ojcl2dbo4c73blu8cg-a:5432/database_niuc"  # replace with Render DB if running locally
 )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
