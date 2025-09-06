@@ -20,10 +20,10 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "loginform")
 
 # ✅ Database Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
-    "postgresql://database_niuc_user:aBThmxX4Bx6L6RXJAA8nxydws2OLV1VD@dpg-d2ojcl2dbo4c73blu8cg-a/database_niuc",
-    "postgresql://database_niuc_user:aBThmxX4Bx6L6RXJAA8nxydws2OLV1VD@dpg-d2ojcl2dbo4c73blu8cg-a:5432/database_niuc"  # replace with Render DB if running locally
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    "postgresql://ml_learn_user:hTFryNuxFowGJUb20qQeqh4f8U1eIqNN@dpg-d2uavabe5dus73ejevdg-a:5432/ml_learn"
 )
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
