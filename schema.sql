@@ -9,7 +9,7 @@ CREATE TABLE first (
     sno SERIAL PRIMARY KEY,         -- auto-increment integer in Postgres
     name VARCHAR(20) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(500) UNIQUE NOT NULL,
     branch VARCHAR(10) NOT NULL,
     address VARCHAR(20) NOT NULL
 );

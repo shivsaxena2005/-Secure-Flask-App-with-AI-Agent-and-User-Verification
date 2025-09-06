@@ -37,9 +37,9 @@ parser = StrOutputParser()
 prompt1 = PromptTemplate(
     template="""
 Is the following topic related to machine learning? 
-If yes, explain it simply in a paragraph and begin with 'Owner is Shiv Saxena.'
+If yes, explain it simply in a paragraph and begin with 'Machine Learning agent says: '
 If not, respond with:
-"Sorry but the authority Mr. Shiv Saxena denied to access or your input is not related to Machine Learning: {topic}"
+"Sorry but the authority Of CodeTechie denied to access or your input is not related to Machine Learning: {topic}"
 
 Topic: {topic}
 """,
@@ -112,12 +112,12 @@ class Contact(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), unique=True, nullable=False)
+    email = db.Column(db.String(500), unique=True, nullable=False)
     branch = db.Column(db.String(10), nullable=False)
     address = db.Column(db.String(20), nullable=False)
 with app.app_context():
     db.create_all()
-# ✅ Home Page
+
 @app.route('/')
 def index():
     return render_template('index.html')

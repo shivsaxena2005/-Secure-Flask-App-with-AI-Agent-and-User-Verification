@@ -1,114 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Naïve Bayes Classifier - In-Depth Explanation</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url('/static/image.png');
-      background-size: cover;
-      background-position: center;
-      font-family: Arial, sans-serif;
-      color: white;
-      backdrop-filter: blur(3px);
-    }
-
-    .container {
-      max-width: 950px;
-      margin: 50px auto;
-      background: rgba(0, 0, 0, 0.75);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
-    }
-
-    h1, h2 {
-      color: cyan;
-    }
-
-    h2 {
-      border-bottom: 2px solid cyan;
-      padding-bottom: 5px;
-      margin-top: 30px;
-    }
-
-    p, li {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .formula {
-      background: rgba(0, 255, 255, 0.1);
-      padding: 12px;
-      border-left: 4px solid cyan;
-      border-radius: 8px;
-      font-family: 'Courier New', monospace;
-      color: cyan;
-      margin: 10px 0;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-    }
-
-    .button-container {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .btn {
-      padding: 12px 20px;
-      font-size: 16px;
-      background-color: cyan;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      background-color: #00e6e6;
-      box-shadow: 0 0 20px cyan;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Naïve Bayes Classifier - A Deep Dive</h1>
-    <p>Naïve Bayes is a probabilistic classifier based on Bayes' Theorem with an assumption of conditional independence between features. It is widely used in spam filtering, document classification, and medical diagnosis due to its simplicity and efficiency.</p>
-    
-    <h2>Mathematical Foundation</h2>
-    <p>Bayes' Theorem provides the foundation for this classifier:</p>
-    <div class="formula">P(A | B) = (P(B | A) * P(A)) / P(B)</div>
-    
-    <h2>Applying Naïve Bayes to Classification</h2>
-    <p>Given a dataset with features X = {x₁, x₂, ..., xₙ} and classes Cₖ = {c₁, c₂, ..., cₘ}, we classify by computing:</p>
-    <div class="formula">P(Cₖ | X) ∝ P(Cₖ) * Π P(xᵢ | Cₖ)</div>
-    <p>The class with the highest probability is the predicted class.</p>
-    
-    <h2>Why the "Naïve" Assumption?</h2>
-    <p>The assumption that all features are independent simplifies computation but is often unrealistic. However, in practice, Naïve Bayes still works well due to its ability to approximate real-world distributions effectively.</p>
-    
-    <h2>Handling Zero Probabilities: Laplace Smoothing</h2>
-    <p>To avoid zero probabilities, we use <strong>Laplace Smoothing</strong>:</p>
-    <div class="formula">P(xᵢ | Cₖ) = (count(xᵢ, Cₖ) + 1) / (count(Cₖ) + |V|)</div>
-    
-    <h2>Gaussian Naïve Bayes for Continuous Data</h2>
-    <p>If features are continuous, we assume a <strong>Gaussian (Normal) distribution</strong> and use the probability density function:</p>
-    <div class="formula">P(x | Cₖ) = (1 / (σ √2π)) * e<sup>−(x − μ)² / (2σ²)</sup></div>
-    
-    <div class="button-container">
-      <a href="/naive_" class="btn">Check Model</a> 
-    </div>
-  </div>
-</body>
-</html> -->
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,95 +8,94 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+            padding: 0;
+            background: url('https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
         }
+
         .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            margin: 50px auto;
         }
-        h1 {
-            color: #333;
-            border-bottom: 2px solid #333;
+
+        h1, h2 {
+            color: cyan;
+        }
+
+        h2 {
+            border-bottom: 2px solid cyan;
             padding-bottom: 5px;
         }
-        p {
+
+        p, li {
+            font-size: 18px;
             line-height: 1.6;
         }
+
+        .formula {
+            font-weight: bold;
+            color: cyan;
+        }
+
         ul {
             margin-left: 20px;
         }
     </style>
+    <!-- Load MathJax for formulas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Support Vector Machine (SVM)</h1>
         <p>
-            SVM is a supervised machine learning algorithm used for both classification and regression tasks. It aims to find the optimal "hyperplane" that separates different classes of data by maximizing the margin between them. The algorithm focuses on the most critical data points called "support vectors."
+            SVM is a supervised machine learning algorithm used for both classification and regression tasks. 
+            It finds the optimal <b>hyperplane</b> that separates classes by maximizing the margin between them.
         </p>
 
-        <h1>Intuition</h1>
-        <p>
-            First, SVM calculates a hyperplane (in 2D, it is a line) to separate data points. Then, it finds two additional hyperplanes:
-        </p>
+        <h2>Intuition</h2>
+        <p>SVM defines three hyperplanes:</p>
         <ul>
-            <li>A positive hyperplane parallel to the main hyperplane and passing through the first support vector on the positive side.</li>
-            <li>A negative hyperplane parallel to the main hyperplane and passing through the first support vector on the negative side.</li>
+            <li>Positive hyperplane: \[ W \cdot X + b = 1 \]</li>
+            <li>Negative hyperplane: \[ W \cdot X + b = -1 \]</li>
+            <li>Main hyperplane: \[ W \cdot X + b = 0 \]</li>
         </ul>
         <p>
-            The distance between these two hyperplanes is <b>d = \( \frac{2}{||W||} \)</b>, which SVM aims to maximize.
+            The margin between positive and negative hyperplanes is: 
+            <span class="formula">\( d = \frac{2}{\lVert W \rVert} \)</span>
         </p>
 
-        <h1>Types of SVM</h1>
+        <h2>Types of SVM</h2>
         <ul>
-            <li><b>Hard Margin SVM:</b> Requires the dataset to be completely separable with no misclassification. It strictly maximizes the margin.</li>
-            <li><b>Soft Margin SVM:</b> Allows some misclassification by introducing slack variables \( \xi \) to improve generalization. The trade-off is controlled by hyperparameter \( C \).</li>
+            <li><b>Hard Margin SVM:</b> Requires perfectly separable data, strictly maximizes margin.</li>
+            <li><b>Soft Margin SVM:</b> Allows misclassifications using slack variables \( \xi \). Trade-off controlled by hyperparameter \( C \).</li>
         </ul>
 
-        <h1>Mathematical Intuition</h1>
-        <p>
-            The equations for hyperplanes are:
-        </p>
+        <h2>Mathematical Intuition</h2>
+        <p>The optimization problem is:</p>
+        <p class="formula">\( \min \frac{1}{2} \lVert W \rVert^2 + C \sum \xi_i \)</p>
         <ul>
-            <li>Positive hyperplane: \( W \cdot X + b = 1 \)</li>
-            <li>Negative hyperplane: \( W \cdot X + b = -1 \)</li>
-            <li>Main hyperplane: \( W \cdot X + b = 0 \)</li>
+            <li><b>C:</b> Trade-off between margin maximization and classification error.</li>
+            <li><b>\( \xi \):</b> Slack variable for misclassification.</li>
         </ul>
-        <p>
-            Here, <b>W</b> is the perpendicular vector from the hyperplane, and <b>X</b> is the data point being classified. The margin is given by:
-        </p>
-        <p><b>d = \( \frac{2}{||W||} \)</b></p>
-        <p>
-            The optimization function is:
-        </p>
-        <p><b>\( \min \frac{1}{2} ||W||^2 + C \sum \xi_i \)</b></p>
-        <ul>
-            <li><b>C:</b> A hyperparameter controlling the trade-off between maximizing the margin and minimizing misclassification.</li>
-            <li><b>\( \xi \) (xi):</b> The slack variable representing the distance of misclassified points from their respective hyperplanes.</li>
-        </ul>
-        <p>
-            The hinge loss function is used for classification:
-        </p>
-        <p><b>\( \sum \max(0, 1 - y_i(W \cdot X_i + b)) \)</b></p>
+        <p>Hinge loss function:</p>
+        <p class="formula">\( \sum_i \max(0, \; 1 - y_i (W \cdot X_i + b)) \)</p>
 
-        <h1>Kernel Trick</h1>
+        <h2>Kernel Trick</h2>
         <p>
-            The kernel trick is a mathematical function that maps lower-dimensional data into a higher-dimensional space, making non-linearly separable data linearly separable. It is useful for handling:
+            The kernel trick maps data into higher dimensions to handle non-linearly separable data.
         </p>
-        <ul>
-            <li>Non-linearly separable data</li>
-            <li>Outliers</li>
-            <li>Robust classification</li>
-        </ul>
-        <p>Common kernel functions include:</p>
         <ul>
             <li><b>Linear Kernel:</b> \( K(x, y) = x \cdot y \)</li>
             <li><b>Polynomial Kernel:</b> \( K(x, y) = (x \cdot y + c)^d \)</li>
-            <li><b>Radial Basis Function (RBF) Kernel:</b> \( K(x, y) = e^{-\gamma ||x - y||^2} \)</li>
+            <li><b>RBF Kernel:</b> \( K(x, y) = e^{-\gamma \lVert x - y \rVert^2} \)</li>
         </ul>
     </div>
 </body>
