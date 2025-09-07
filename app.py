@@ -26,14 +26,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-
 load_dotenv()
-model = ChatTogether()
-
 parser = StrOutputParser()
 
-
-#app.secret_key = os.urandom(24)  # Generates a random key each time the app restarts
 prompt1 = PromptTemplate(
     template="""
 Is the following topic related to machine learning? 
@@ -52,32 +47,28 @@ def key():
         api_key = request.form.get('api_key')
         if api_key.startswith("015"):  # simple validation
             session['api_key'] = api_key
-            return redirect(url_for('ai'))  # Go to ai page
+            return redirect(url_for('ai'))
         else:
             return render_template('key.html', error="Invalid API Key format!")
     return render_template('key.html')
 
-
-# Route for AI agent
 @app.route('/aiagent', methods=['GET', 'POST'])
 def ai():
     if 'api_key' not in session:
-        return redirect(url_for('key'))  # No key entered → go back
+        return redirect(url_for('key'))
 
-    TOGETHER_API_KEY = session['api_key']  # get saved key
+    TOGETHER_API_KEY = session['api_key']
 
-    # Initialize model with stored key
-    model = ChatTogether(api_key = TOGETHER_API_KEY,model="meta-llama/Llama-3-70b-chat-hf")
+    # Initialize model here (not globally)
+    model = ChatTogether(api_key=TOGETHER_API_KEY, model="meta-llama/Llama-3-70b-chat-hf")
 
     if request.method == 'POST':
         inp = request.form.get('text')
-        chain = prompt1 | model  # assuming you have defined prompt1 already
+        chain = prompt1 | model
         s = chain.invoke({'topic': inp})
-        print(s.content)
         return render_template('open_ai.html', response=s.content)
     else:
         return render_template('Agent.html')
-
 
 #Load configuration from JSON
 with open('templates/config.json', 'r') as f:
